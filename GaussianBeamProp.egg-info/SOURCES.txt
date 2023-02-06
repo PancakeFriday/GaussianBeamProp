@@ -1,9 +1,0 @@
-LICENSE
-README.md
-setup.py
-GaussianBeamProp.egg-info/PKG-INFO
-GaussianBeamProp.egg-info/SOURCES.txt
-GaussianBeamProp.egg-info/dependency_links.txt
-GaussianBeamProp.egg-info/top_level.txt
-gaussianbeamprop/__init__.py
-gaussianbeamprop/propagation.py
