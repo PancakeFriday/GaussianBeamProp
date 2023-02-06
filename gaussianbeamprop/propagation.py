@@ -74,7 +74,7 @@ class BeamPropagation:
             beam.zmax = l.position
             self.beams.append(Beam(beam.wavelength, new_waist, new_z0 + l.position, zmin=l.position))
         
-    def plot(self, x0=-100e-3, x1=500e-3, ylim=None):
+    def plot(self, figsize=(20, 3), x0=-100e-3, x1=500e-3, ylim=None):
         self._create_beams()
         
         xfine = np.linspace(x0, x1, 1000)
@@ -83,7 +83,7 @@ class BeamPropagation:
         y1 *= 1e3 # scale to mm
         y2 = -y1
         
-        plt.figure(figsize=(20, 3))
+        plt.figure(figsize=figsize)
         
         plt.plot(xfine, y1, c="tab:blue")
         plt.plot(xfine, y2, c="tab:blue")
