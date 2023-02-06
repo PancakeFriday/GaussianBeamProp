@@ -25,4 +25,5 @@ prop.add_element(gp.Lens(position=0.6, f=0.1))
 prop.add_element(gp.Lens(position=0.7, f=0.3))
 prop.add_element(gp.Lens(position=0.8, f=0.9))
 
-prop.plot(figsize=(10, 3), ylim=None, x0=-50e-3, x1=1)```
+prop.plot(figsize=(10, 3), ylim=None, x0=-50e-3, x1=1)
+```
