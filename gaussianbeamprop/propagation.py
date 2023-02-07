@@ -22,7 +22,7 @@ class Beam:
             z_ = np.array([z_])
         
         if do_clip:
-            clip = np.where(z > self.zmin, 1, 0) * np.where(z < self.zmax, 1, 0)
+            clip = np.where(z > self.zmin, 1, 0) * np.where(z <= self.zmax, 1, 0)
         else:
             clip = np.ones(len(z_))
         return self.waist * np.sqrt(A) * clip
