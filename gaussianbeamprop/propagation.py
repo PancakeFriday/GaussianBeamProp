@@ -14,13 +14,13 @@ class Beam:
         self.zmax = zmax
 
     @classmethod
-    def from_beam_sizes(cls, wavelength, beam_sizes, z_positions, p0=None):
+    def from_beam_sizes(cls, wavelength, beam_sizes, z_positions, p0=None, sigma=None):
         def fit_func(z, w0, z0):
             zR = np.pi*w0**2 / wavelength
             return w0 * np.sqrt(1 + ((z - z0) / zR) ** 2)
 
         p0 = p0 or (2*beam_sizes[0], z_positions[0])
-        (waist, waist_position), _ = curve_fit(fit_func, z_positions, beam_sizes, p0=p0)
+        (waist, waist_position), _ = curve_fit(fit_func, z_positions, beam_sizes, p0=p0, sigma=sigma)
 
         return cls(wavelength, waist, waist_position)
         
