@@ -1,5 +1,6 @@
 import matplotlib.pyplot as plt
 from matplotlib.patches import Ellipse
+from scipy.optimize import curve_fit
 import numpy as np
 
 class Beam:
@@ -11,6 +12,16 @@ class Beam:
         
         self.zmin = zmin
         self.zmax = zmax
+
+    @classmethod
+    def from_beam_sizes(cls, wavelength, beam_sizes, z_positions):
+        def fit_func(z, w0, z0):
+            zR = np.pi*w0**2 / wavelength
+            return w0 * np.sqrt(1 + ((z - z0) / zR) ** 2)
+
+        (waist, waist_position), _ = curve_fit(fit_func, z_positions, beam_sizes, p0=(2*beam_sizes[0], z_positions[0]))
+
+        return cls(wavelength, waist, waist_position)
         
     def spot_size(self, z, do_clip=True):
         """
