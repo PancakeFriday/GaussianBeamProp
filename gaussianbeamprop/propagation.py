@@ -93,6 +93,7 @@ class BeamPropagation:
         
         y1 = self.spot_size(xfine)
         y1 *= 1e3 # scale to mm
+        y1 /= 2 # because of diameter
         y2 = -y1
         
         plt.figure(figsize=figsize)
